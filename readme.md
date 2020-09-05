@@ -13,4 +13,11 @@ $npm init
 ## Project Structure
 
 ### Server Side Architecture
-
+```
+    |-- src
+        |-- directoryList.md                  # Directory list of all the files cosisting this directory 
+        |-- controllers       
+        |-- db
+        |-- public                            # Contains all the static files 
+        |-- routes                            # Middlewares and routes file
+```

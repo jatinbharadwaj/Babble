@@ -1,0 +1,33 @@
+{
+  "name": "switter",
+  "version": "1.0.0",
+  "description": "A social app similar to something famous",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jatinbharadwaj/Switter.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "MongoDb",
+    "HTML",
+    "CSS",
+    "JQuery",
+    "BootStrap"
+  ],
+  "author": "jeeku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jatinbharadwaj/Switter/issues"
+  },
+  "homepage": "https://github.com/jatinbharadwaj/Switter#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongodb": "^3.6.1"
+  }
+}
