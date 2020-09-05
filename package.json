@@ -1,5 +1,5 @@
 {
-  "name": "switter",
+  "name": "babble",
   "version": "1.0.0",
   "description": "A social app similar to something famous",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jatinbharadwaj/Switter.git"
+    "url": "git+https://github.com/jatinbharadwaj/babble.git"
   },
   "keywords": [
     "NodeJS",
@@ -22,12 +22,13 @@
   "author": "jeeku",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jatinbharadwaj/Switter/issues"
+    "url": "https://github.com/jatinbharadwaj/babble/issues"
   },
-  "homepage": "https://github.com/jatinbharadwaj/Switter#readme",
+  "homepage": "https://github.com/jatinbharadwaj/babble#readme",
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "mongodb": "^3.6.1"
+    "mongodb": "^3.6.1",
+    "mongoose": "^5.10.3"
   }
 }
