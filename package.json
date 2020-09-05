@@ -28,7 +28,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "mongodb": "^3.6.1",
-    "mongoose": "^5.10.3"
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
   }
 }
