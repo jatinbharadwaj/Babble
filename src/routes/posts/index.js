@@ -27,7 +27,6 @@ route.post('/', async (req, res) => {
   res.status(201).send(post)
 })
 
-
 module.exports = {
   postsRoute: route
 }

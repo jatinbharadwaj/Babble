@@ -28,6 +28,7 @@ module.exports = {
 
 /*  Test Code */
 
+/*
 async function task () {
     console.log(await createAnonUser())
     console.log('---------------------')
@@ -39,3 +40,4 @@ async function task () {
     console.log('---------------------')
 }
 task() 
+*/

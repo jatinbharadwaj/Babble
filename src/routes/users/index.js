@@ -9,14 +9,14 @@ const route = Router()
 
 route.get('/:id', async (req, res) => {
   let user;
-  console.log(req.params.id)
+  console.log(req.params.id)  
 
   if (isNaN(parseInt(req.params.id))) {
     // when param is username
     user = await getUserByUsername(req.params.id)
   } else {
     // when param is user id
-    user = await getUserById(req.params.id)
+    user = await getUserById(parseInt(req.params.id))
   }
 
   console.log(user)
@@ -30,7 +30,7 @@ route.get('/:id', async (req, res) => {
   }
 })
 
-route.post('/', async (req, res) => {
+route.post('/', async (req, res) => { 
   const user = await createAnonUser()
   res.status(201).send(user)
 })
