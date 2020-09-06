@@ -5,7 +5,7 @@ const app = express()
 
 
 
-db.sync().then(()=>{
+db.sync({force:true}).then(()=>{
     app.listen(4444,()=>{
         console.log('server has started on http:localhost:4444')
     })

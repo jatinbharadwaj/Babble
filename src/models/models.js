@@ -11,6 +11,10 @@ const COL_ID_DEF = {
     autoIncrement: true,
     primaryKey: true,
   }
+  const COL_IDS_DEF = {
+    type: Sequelize.DataTypes.INTEGER,
+    ForeignKey: true,
+  }
   const COL_USERNAME_DEF = {
     type: Sequelize.DataTypes.STRING(30),
     unique: true,
@@ -46,13 +50,28 @@ const COL_ID_DEF = {
 
 const Followers = db.define('follow',{
     id:COL_ID_DEF,
-    ids:COL_ID_DEF
+    ids:COL_IDS_DEF
 })
 
 const Following = db.define('followers',{
     id:COL_ID_DEF,
-    ids:COL_ID_DEF
+    ids:COL_IDS_DEF
 })
+
+Users.hasMany(Posts)
+Posts.belongsTo(Users)
+
+Users.hasMany(Comments)
+Comments.belongsTo(Users)
+
+Posts.hasMany(Comments)
+Comments.belongsTo(Posts)
+
+Users.hasMany(Followers)
+Followers.belongsTo(Users)
+
+Users.hasMany(Following)
+Following.belongsTo(Users)
 
 module.exports = {
     db,Users,Posts,Comments,Followers,Following
