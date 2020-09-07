@@ -1,13 +1,6 @@
 const { Users, db } = require('../models/models')
 const { genRandomUsername } = require('../utils/username')
 
-async function createAnonUser() {
-  const user = await Users.create({
-    username: genRandomUsername(),
-    description: 'I WANNA BE A HOKAGE SOMEDAY',
-  })
-  return user
-}
   async function createNewUser(username,description,followersCount,friendsCount,postsCount){
   const user = await Users.create({
     username,
@@ -31,7 +24,7 @@ async function getUserByUsername(username) {
 }
 
 module.exports = {
-  createAnonUser,
+  createNewUser,
   getUserById,
   getUserByUsername,
 }

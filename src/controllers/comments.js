@@ -34,25 +34,25 @@ module.exports = {
 
 // TEST 
 
-async function task(){
-    console.log(
-        await createNewComment(
-            'title1',
-            'body1',
-            4,
-            1,
-            1
-        )
-    )
-    console.log(
-        await createNewComment(
-            'title2',
-            'body2',
-            2,
-            1,
-            2
-        )
-    )
-}
+// async function task(){
+//     console.log(
+//         await createNewComment(
+//             'title1',
+//             'body1',
+//             4,
+//             1,
+//             1
+//         )
+//     )
+//     console.log(
+//         await createNewComment(
+//             'title2',
+//             'body2',
+//             2,
+//             1,
+//             2
+//         )
+//     )
+// }
 
-task()
+// task()
