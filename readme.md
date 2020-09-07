@@ -1,4 +1,4 @@
-    # BABBLE
+# BABBLE
 ### Social Media App just like something Famous
 
 ## Project Setup
