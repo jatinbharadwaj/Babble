@@ -13,13 +13,13 @@ route.get('/', async (req, res) => {
 })
 
 route.post('/', async (req, res) => {
-  console.log(`POST /api/posts`, req.body)
+  console.log(`POST /api/posts ${req.body}`)
   
   const { userId, title, body } = req.body
   
   if ((!userId) || (!title) || (!body)) {
     return res.status(400).send({
-      error: 'Need userid, title and body to create post'
+      error: `Need userid, title and body to create post,user id ->${userId} title-> ${title} body-> ${body}`
     })
   }
 

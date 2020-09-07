@@ -1,13 +1,13 @@
 
-const { Posts, Users } = require('../models/models')
+const { Posts, Users, db } = require('../models/models')
 
-async function createNewPost(userId, title, body) {
+async function createNewPost(userId, title, body,likesCount) {
   const post = await Posts.create({
     title,
     body,
-    userId,
+    likesCount,
+    userId
   })
-
   return post
 }
 
@@ -33,26 +33,26 @@ module.exports = {
 }
 
 /* Test Code */
-/*
-async function task() {
-  console.log(
-    await createNewPost(
-      1,
-      'This is a sample post',
-      'Body of the post goes here'
-    )
-  ),
-  console.log(
-    await createNewPost(
-      2,
-      'Another sample post',
-      'Some body example here as well'
-    )
-  )
-  const posts = await showAllPosts()
-  for (let p of posts) {
-    console.log(`${p.title}\nauthor: ${p.user.username}\n${p.body}\n==========\n`)
-  }
-}
-task()
-*/
+
+// async function task() {
+//   console.log(
+//     await createNewPost(
+//       1,
+//       'This is a sample post',
+//       'Body of the post goes here',2
+//     )
+//   ),
+//   console.log(
+//     await createNewPost(
+//       2,
+//       'Another sample post',
+//       'Some body example here as well',1
+//     )
+//   )
+//   // const posts = await showAllPosts()
+//   for (let p of posts) {
+//     console.log(`${p.title}\nauthor: ${p.user.username}\n${p.body}\n${p.likeCount} \n==========\n`)
+//   }
+// }
+// task()
+

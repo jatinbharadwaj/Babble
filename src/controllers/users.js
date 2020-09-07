@@ -1,11 +1,21 @@
-const { Users } = require('../models/models')
+const { Users, db } = require('../models/models')
 const { genRandomUsername } = require('../utils/username')
 
 async function createAnonUser() {
   const user = await Users.create({
     username: genRandomUsername(),
+    description: 'I WANNA BE A HOKAGE SOMEDAY',
   })
-
+  return user
+}
+  async function createNewUser(username,description,followersCount,friendsCount,postsCount){
+  const user = await Users.create({
+    username,
+    description,
+    followersCount,
+    friendsCount,
+    postsCount
+  })
   return user
 }
 
@@ -28,16 +38,31 @@ module.exports = {
 
 /*  Test Code */
 
-/*
-async function task () {
-    console.log(await createAnonUser())
-    console.log('---------------------')
-    console.log(await createAnonUser())
-    console.log('---------------------')
-    console.log(await createAnonUser())
-    console.log('---------------------')
-    console.log(await createAnonUser())
-    console.log('---------------------')
-}
-task() 
-*/
+
+// async function task () {
+//     console.log(await createAnonUser())
+//     console.log('---------------------')
+//     console.log(await createAnonUser())
+//     console.log('---------------------')
+//     console.log(await createAnonUser())
+//     console.log('---------------------')
+//     console.log(await createAnonUser())
+//     console.log('---------------------')
+// }
+// task() 
+
+
+// TEST CODE createNewUser()
+
+// async function task(){
+//   let x = genRandomUsername()
+//   console.log(await createNewUser(x,`Description of ${x}`,2,3,4))
+//   console.log("---------------------------------")
+//   x = genRandomUsername()
+//   console.log(await createNewUser(x,`Description of ${x}`,2,3,8))
+//   console.log("------------------------")
+//   x = genRandomUsername()
+//   console.log(await createNewUser(x,`Description of ${x}`,9,1,2))
+// }
+
+// task()
