@@ -40,7 +40,9 @@ const db = new Sequelize({
     description: { type: Sequelize.DataTypes.TEXT, allowNull:true },
     followersCount: {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 },
     friendsCount:  {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0},
-    postsCount:  {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0}
+    postsCount:  {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0},
+    email: {type:Sequelize.DataTypes.STRING(30),unique:true,allowNull:false},
+    password: {type: Sequelize.DataTypes.STRING(30),allowNull:false}
   })
 
   //------------------POSTS-------------------------------- 

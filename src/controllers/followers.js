@@ -1,4 +1,4 @@
-const{Users,db,followers, Followers} = require('../models/models')
+const{Users,db,Followers} = require('../models/models')
 
 async function createFollow(followid,userId){
     const follower = await Followers.create({
@@ -17,9 +17,9 @@ async function getFollowerId(followid){
 
 // TEST
 
-async function task(){
-    console.log( await createFollow(2,1))
-    console.log( await createFollow(2,3))
-}
+// async function task(){
+//     console.log( await createFollow(2,1))
+//     console.log( await createFollow(2,3))
+// }
 
-task()
+// task()

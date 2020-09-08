@@ -1,10 +1,9 @@
 const { Posts, Users, db, Comments } = require('../models/models')
 
-async function createNewComment(title,body,likesCount,userId,postId){
+async function createNewComment(title,body,userId,postId){
     const comment = Comments.create({
         title,
         body,
-        likesCount,
         userId,
         postId
     })

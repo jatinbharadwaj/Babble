@@ -1,11 +1,10 @@
 
 const { Posts, Users, db } = require('../models/models')
 
-async function createNewPost(userId, title, body,likesCount) {
+async function createNewPost(userId, title, body) {
   const post = await Posts.create({
     title,
     body,
-    likesCount,
     userId
   })
   return post

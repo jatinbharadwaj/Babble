@@ -1,13 +1,10 @@
 const { Users, db } = require('../models/models')
 const { genRandomUsername } = require('../utils/username')
 
-  async function createNewUser(username,description,followersCount,friendsCount,postsCount){
+  async function createNewUser(username,description){
   const user = await Users.create({
     username,
-    description,
-    followersCount,
-    friendsCount,
-    postsCount
+    description
   })
   return user
 }
@@ -28,22 +25,6 @@ module.exports = {
   getUserById,
   getUserByUsername,
 }
-
-/*  Test Code */
-
-
-// async function task () {
-//     console.log(await createAnonUser())
-//     console.log('---------------------')
-//     console.log(await createAnonUser())
-//     console.log('---------------------')
-//     console.log(await createAnonUser())
-//     console.log('---------------------')
-//     console.log(await createAnonUser())
-//     console.log('---------------------')
-// }
-// task() 
-
 
 // TEST CODE createNewUser()
 

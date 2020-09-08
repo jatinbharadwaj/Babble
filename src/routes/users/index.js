@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { 
-  createAnonUser,
+  createNewUser,
   getUserById,
   getUserByUsername
 } = require('../../controllers/users')
@@ -31,7 +31,7 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async (req, res) => { 
-  const user = await createAnonUser()
+  const user = await createNewUser()
   res.status(201).send(user)
 })
 
