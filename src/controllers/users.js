@@ -1,15 +1,20 @@
 const { Users, db } = require('../models/models')
 const { genRandomUsername } = require('../utils/username')
+const bcrypt = require('bcrypt')
 
   async function createNewUser(username,description,email,password){
-  const user = await Users.create({
+    
+    const hash = bcrypt.hashSync(password,8)
+    password = hash
+    const user = await Users.create({
     username,
     description,
     email,
     password
   }).catch((err)=>{
     console.error(new Error('USERNAME OR PASSWORD ALREADY EXISTS'))
-    return err.msg;
+    console.error(err);
+    return err;
   })
   return user
 }
@@ -25,11 +30,35 @@ async function getUserByUsername(username) {
   return await Users.findOne({ where: { username } })
 }
 
+
+
 module.exports = {
   createNewUser,
   getUserById,
   getUserByUsername,
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // TEST CODE createNewUser()
 
