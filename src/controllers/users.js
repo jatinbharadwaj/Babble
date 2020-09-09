@@ -1,10 +1,15 @@
 const { Users, db } = require('../models/models')
 const { genRandomUsername } = require('../utils/username')
 
-  async function createNewUser(username,description){
+  async function createNewUser(username,description,email,password){
   const user = await Users.create({
     username,
-    description
+    description,
+    email,
+    password
+  }).catch((err)=>{
+    console.error(new Error('USERNAME OR PASSWORD ALREADY EXISTS'))
+    return err.msg;
   })
   return user
 }

@@ -31,7 +31,17 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async (req, res) => { 
-  const user = await createNewUser()
+  console.log(`POST /api/users ${req.body}`)
+  
+  const { username, description, email, password } = req.body
+  
+  if ((!username) || (!email) || (!password)) {
+    return res.status(400).send({
+      error: `Need userid, title and body to create post,user id`
+    })
+  }
+
+  const user = await createNewUser(username, description, email,password)
   res.status(201).send(user)
 })
 
