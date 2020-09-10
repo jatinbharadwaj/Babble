@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt')
 
   async function createNewUser(username,description,email,password){
     
-    const hash = bcrypt.hashSync(password,8)
-    password = hash
     const user = await Users.create({
     username,
     description,

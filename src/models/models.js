@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const bcrypt = require('bcrypt')
 
 const db = new Sequelize({
     dialect:'mysql',
@@ -6,7 +7,8 @@ const db = new Sequelize({
     username:'babbleuser',
     password:'babblepass',
 })
-//++++++++++++++++++++++COMMON CONSTRAINTS++++++++++++++++++++++++++++
+//++++++++++++++++++++++        COMMON CONSTRAINTS      ++++++++++++++++++++++++++++
+
   const COL_ID_PRIMARY_DEF = {
     type: Sequelize.DataTypes.INTEGER,
     autoIncrement: true,
@@ -33,7 +35,7 @@ const db = new Sequelize({
 
   //++++++++++++++++++++DEFINE MODELS+++++++++++++++++++++++++//
   
-  // ----------------- USER---------------------------------
+  // -----------------       USER                     ---------------------------------
   const Users = db.define('user', {
     id: COL_ID_PRIMARY_DEF,
     username: COL_USERNAME_DEF,
@@ -43,9 +45,21 @@ const db = new Sequelize({
     postsCount:  {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0},
     email: {type:Sequelize.DataTypes.STRING(30),unique:true,allowNull:false},
     password: {type: Sequelize.DataTypes.TEXT,allowNull:false}
+  },{    
+      hooks: {
+      beforeCreate: (user) => {
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
+      }
+    },
+    instanceMethods: {
+      validPassword: function(password) {
+        return bcrypt.compareSync(password, this.password);
+      }
+    }
   })
 
-  //------------------POSTS-------------------------------- 
+  //------------------            POSTS                 -------------------------------- 
   
   const Posts = db.define('post', {
     id: COL_ID_PRIMARY_DEF,
@@ -53,7 +67,7 @@ const db = new Sequelize({
     body: { type: Sequelize.DataTypes.TEXT, allowNull: false },
     likesCount:{type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 }
   })
-  // --------------------Comments---------------------------
+  // --------------------             Comments          ---------------------------
   const Comments = db.define('comment', {
     id: COL_ID_PRIMARY_DEF,
     title: COL_TITLE_DEF,
@@ -63,7 +77,7 @@ const db = new Sequelize({
     likesCount: {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 },
   })
 
-  // -------------------FOLLOW & FRIENDS--------------------
+  // -------------------           FOLLOW & FRIENDS             --------------------
   
   const Followers = db.define('follow',{
     id: COL_ID_PRIMARY_DEF,
@@ -88,8 +102,6 @@ Comments.belongsTo(Posts)
 Users.hasMany(Followers)
 Followers.belongsTo(Users)
 
-// Users.hasMany(Following)
-// Following.belongsTo(Users)
 
 module.exports = {
     db,Users,Posts,Comments,
