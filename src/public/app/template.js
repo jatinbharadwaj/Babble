@@ -2,10 +2,11 @@ $(()=>{
 
     $('#navbar').load('./components/navbar.html')
     $('#footer').load('./components/footer.html')
-    $(window).on('load',function()
-    {
+    $('#register').load('./components/register.html',()=>{
         $('#loginSignup').modal('show')
     })
+
+    
     //$('#content').load('/components/explore.js')
 
 })

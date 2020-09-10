@@ -7,7 +7,7 @@ const db = new Sequelize({
     username:'babbleuser',
     password:'babblepass',
 })
-//++++++++++++++++++++++        COMMON CONSTRAINTS      ++++++++++++++++++++++++++++
+//++++++++++++++++++++++        COMMON CONSTRAINTS      +++++++++++++++++++++++++++++++
 
   const COL_ID_PRIMARY_DEF = {
     type: Sequelize.DataTypes.INTEGER,
@@ -33,9 +33,9 @@ const db = new Sequelize({
   }
   
 
-  //++++++++++++++++++++DEFINE MODELS+++++++++++++++++++++++++//
+  //++++++++++++++++++++           DEFINE MODELS                  +++++++++++++++++++++++++//
   
-  // -----------------       USER                     ---------------------------------
+  // -----------------                 USER                     -----------------------------
   const Users = db.define('user', {
     id: COL_ID_PRIMARY_DEF,
     username: COL_USERNAME_DEF,
@@ -81,14 +81,16 @@ const db = new Sequelize({
   
   const Followers = db.define('follow',{
     id: COL_ID_PRIMARY_DEF,
-    followid: {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 }
+    followedid: {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 }
   })
   
 
-// const Followers = db.define('follow',{
-//     uid: {type: Sequelize.DataTypes.INTEGER,autoIncrement: false, primaryKey: true},
-//     fid:COL_ID_FOREIGN_DEF
-// })
+  // -------------------           Liker and Likes            --------------------
+const Likes = db.define('like',{
+  id: {type: Sequelize.DataTypes.INTEGER,autoIncrement: false, primaryKey: true},
+  Likingid: {type:Sequelize.DataTypes.INTEGER,allowNull:false,defaultValue:0 }
+
+})
 
 Users.hasMany(Posts)
 Posts.belongsTo(Users)
@@ -102,8 +104,14 @@ Comments.belongsTo(Posts)
 Users.hasMany(Followers)
 Followers.belongsTo(Users)
 
+Users.hasMany(Likes)
+Likes.belongsTo(Users)
+
+Posts.hasMany(Likes)
+Likes.belongsTo(Posts)
+
 
 module.exports = {
     db,Users,Posts,Comments,
-    Followers
+    Followers,Likes
 }
