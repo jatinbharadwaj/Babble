@@ -21,3 +21,5 @@ $npm init
         |-- public                            # Contains all the static files 
         |-- routes                            # Middlewares and routes file
 ```
+
+## AUTHORIZATION
