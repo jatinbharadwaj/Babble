@@ -5,9 +5,6 @@ $(()=>{
     $('#register').load('./components/register.html',()=>{
         $('#loginSignup').modal('show')
     })
-
     
-    //$('#content').load('/components/explore.js')
-
 })
 
