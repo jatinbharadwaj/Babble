@@ -1,8 +1,6 @@
 const express = require('express')
 const {db} = require('./models/models') 
-const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const morgan = require('morgan')
+
 
 const app = express()
 

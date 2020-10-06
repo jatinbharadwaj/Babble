@@ -31,7 +31,7 @@ route.get('/:id', async (req, res) => {
 })
 
 route.post('/', async (req, res) => { 
-  console.log(`POST /api/users ${req.body}`)
+  console.log(`POST /api/users here in body ${req.body}`)
   
   const { username, description, email, password } = req.body
   
